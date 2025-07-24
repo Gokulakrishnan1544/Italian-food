@@ -1,53 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
+let form = document.getElementById("login");
 
-<head>
-    <title>login form</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/login.css">
-    <script src="../js/login.js" defer></script>
-</head>
-    <body>
-    <header>
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-      <div class="container">
-        <a class="navbar-brand" href=""></a>
-        <button class="navbar-toggler" type="button"><span class="navbar-toggler-icon" data-bs-toggle="collapse"
-            data-bs-target="#navbar"></span></button>
-        <div class="collapse navbar-collapse" id="navbar">
-          <ul class="navbar-nav ms-auto">
-            <a href="#" ><img src="../images/home.svg" alt="Home" width="20" height="40"> <li class="navbar-item"><a class="nav-link" href="../index.html" target="_self">HOME</a></a></li>
-            <a href="#" ><img src="../images/login.svg" alt="Home" width="20" height="40"> <li class="navbar-item"><a class="nav-link active" href="#">LOGIN</a></li></a>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
+form.addEventListener("submit", function(e) {
+    e.preventDefault(); // prevent form reload
 
-    <div class="box">
-        <h2 style="text-align: center; font-weight: bold;">Login</h2>
-        <form action="" id = "login">      
-        <input class="mt-3" type="text" placeholder="username" id ="username" autofocus><br><br>
-        <p id = "msg"></p>
+    let userInput = document.getElementById("username").value.trim(); // this can be username or email
+    let password = document.getElementById("password").value.trim();
 
-        <input type="password" placeholder="Password" id="password"><br>
-        <p id = "msg2"></p>
+    let msg = document.getElementById("msg");
+    let msg2 = document.getElementById("msg2");
 
-        <p style="text-align: right; font-weight:bold;" class="mt-3">Forget password</p>
-        <div class="data">
-        <input type="submit" name="submit" id="" value="Sign In" class="btn btn-primary">
-        </div>
+    // Input validation
+    if (userInput === "" && password === "") {
+        msg.innerText = "Username/Email and password cannot be empty";
+        msg.style.color = "red";
+        return;
+    } 
 
-        <p style="text-align: left; font-weight: bold;" class="mt-1"> Don't have account? sign up</p>
-        <a href="./registration.html" class="btn btn-primary">Register</a>
+    let store = JSON.parse(localStorage.getItem("userdata")); 
 
-    </div>
-  </form>
-    </body>
-</head>
+    if (!store) {
+        msg.innerText = "No user found. Please register first.";
+        msg.style.color = "red";
+        return;
+    }
 
-</html>
+    // Check if userInput matches username or email
+    const isUserValid = (userInput === store.username || userInput === store.email) && password === store.password;
+
+    if (isUserValid) {
+        alert("Login successful!");
+        window.location.href = "../pages/logged in.html";  // Redirect to homepage
+    } else {
+        msg.innerText = "Invalid username/email or password";
+        msg.style.color = "red";
+    }
+});
