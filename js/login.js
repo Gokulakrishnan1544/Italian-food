@@ -1,34 +1,53 @@
-let form = document.getElementById("login");
+<!DOCTYPE html>
+<html lang="en">
 
-form.addEventListener("submit", function(e) {
-    e.preventDefault(); // prevent form reload
+<head>
+    <title>login form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="../js/login.js" defer></script>
+</head>
+    <body>
+    <header>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href=""></a>
+        <button class="navbar-toggler" type="button"><span class="navbar-toggler-icon" data-bs-toggle="collapse"
+            data-bs-target="#navbar"></span></button>
+        <div class="collapse navbar-collapse" id="navbar">
+          <ul class="navbar-nav ms-auto">
+            <a href="#" ><img src="../images/home.svg" alt="Home" width="20" height="40"> <li class="navbar-item"><a class="nav-link" href="../index.html" target="_self">HOME</a></a></li>
+            <a href="#" ><img src="../images/login.svg" alt="Home" width="20" height="40"> <li class="navbar-item"><a class="nav-link active" href="#">LOGIN</a></li></a>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-    let username = document.getElementById("username").value.trim();
-    let password = document.getElementById("password").value.trim();
+    <div class="box">
+        <h2 style="text-align: center; font-weight: bold;">Login</h2>
+        <form action="" id = "login">      
+        <input class="mt-3" type="text" placeholder="username" id ="username" autofocus><br><br>
+        <p id = "msg"></p>
 
-    let msg = document.getElementById("msg");
-    let msg2 = document.getElementById("msg2");
+        <input type="password" placeholder="Password" id="password"><br>
+        <p id = "msg2"></p>
 
-    // Input validation
-    if (username === "" && password === "") {
-        msg.innerText = "Username and password cannot be empty";
-        msg.style.color = "red";
-        return;
-    } 
+        <p style="text-align: right; font-weight:bold;" class="mt-3">Forget password</p>
+        <div class="data">
+        <input type="submit" name="submit" id="" value="Sign In" class="btn btn-primary">
+        </div>
 
-    let store = JSON.parse(localStorage.getItem("userdata")); 
+        <p style="text-align: left; font-weight: bold;" class="mt-1"> Don't have account? sign up</p>
+        <a href="./registration.html" class="btn btn-primary">Register</a>
 
-    if (!store) {
-        msg .innerText = "No user found. Please register first.";
-        msg.style.color = "red";
-        return;
-    }
+    </div>
+  </form>
+    </body>
+</head>
 
-    if (username === store.username && password === store.password) {
-        alert("Login successful!");
-        window.location.href = "../index.html";  // Redirect to homepage
-    } else {
-        msg.innerText = "Invalid username or password";
-        msg.style.color = "red";
-    }
-});
+</html>
