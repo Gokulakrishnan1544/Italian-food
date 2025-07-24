@@ -1,0 +1,49 @@
+h3{
+    font-weight: bolder;
+    font-size:x-large;
+    text-align: center;
+    display: inline;
+}
+
+body{
+    background-color:aqua;
+}
+
+.card{
+    width: 30% ;
+    background-color:bisque;
+    box-shadow: 5px 5px 12px;
+    border-radius: 20px;
+    padding: 30px;
+    margin: auto;
+    width: 300px;
+    margin-top: 70px;
+}
+.group input {
+    margin: 5px;
+}
+.btn {
+    margin: 5px;
+}
+#msg{
+    margin: 10px;
+    margin-top: 0px;
+    font-size: 12px;
+}
+#msg2{
+    margin: 10px;
+    margin-top: 0px;
+    font-size: 12px;
+}
+#msg3{
+    margin: 10px;
+    margin-top: 0px;
+    font-size: 12px;
+}
+#msg4{
+    margin: 10px;
+    margin-top: 0px;
+    font-size: 12px;
+}
+
+

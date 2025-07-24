@@ -1,0 +1,22 @@
+ .box {
+            /* border: 2px solid black; */
+            background-color: thistle;
+            box-shadow: 5px 5px 12px;
+            border-radius: 20px;
+            padding: 30px;
+            margin: auto;
+            width: 300px;
+            margin-top: 70px;
+
+        }
+
+        /* .data {
+            text-align: center;
+        } */
+
+        body {
+            background-color: skyblue;
+        }
+        #btn{
+            text-align: center;
+        }
