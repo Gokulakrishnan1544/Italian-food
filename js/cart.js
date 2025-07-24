@@ -95,9 +95,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  // Show modal after 10 seconds
-  setTimeout(() => {
-    const myModal = new bootstrap.Modal(document.getElementById('authModal'));
-    myModal.show();
-  }, 10000); // 10 seconds = 10000 ms
 
